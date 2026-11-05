@@ -1,4 +1,4 @@
-# documentation-ai
+# Acme Payments API
 
 Developer documentation for the **Acme Payments API** (v1.4.0): three
 hand-written guides and an OpenAPI 3.0.3 specification. The API lets you charge
