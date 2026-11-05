@@ -588,7 +588,7 @@ paths:
     delete:
       tags: [Webhook endpoints]
       summary: Delete a webhook endpoint
-      description: Removes a webhook endpoint. Events stop being sent to its URL immediately.
+      description: Removes a webhook endpoint. Events stop being sent to its URL immediately, and this cannot be undone.
       operationId: deleteWebhookEndpoint
       responses:
         "204":
