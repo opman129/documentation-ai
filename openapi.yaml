@@ -582,6 +582,24 @@ paths:
         "422":
           $ref: "#/components/responses/UnprocessableEntity"
 
+  /webhook-endpoints/{webhookEndpointId}:
+    parameters:
+      - $ref: "#/components/parameters/WebhookEndpointId"
+    delete:
+      tags: [Webhook endpoints]
+      summary: Delete a webhook endpoint
+      description: Removes a webhook endpoint. Events stop being sent to its URL immediately.
+      operationId: deleteWebhookEndpoint
+      responses:
+        "204":
+          description: The webhook endpoint was deleted. No content is returned.
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
 components:
 
   securitySchemes:
@@ -635,6 +653,14 @@ components:
       schema:
         type: string
         maxLength: 255
+    WebhookEndpointId:
+      name: webhookEndpointId
+      in: path
+      required: true
+      description: The webhook endpoint's unique identifier.
+      schema:
+        type: string
+        example: we_3Fh8sLq2Xc
     CustomerId:
       name: customerId
       in: path

@@ -50,6 +50,7 @@ New to the API? Start with the [Quickstart](./quickstart.md).
 | `GET` | `/payment-methods/{paymentMethodId}` | Retrieve a payment method |
 | `GET` | `/webhook-endpoints` | List webhook endpoints |
 | `POST` | `/webhook-endpoints` | Create a webhook endpoint |
+| `DELETE` | `/webhook-endpoints/{webhookEndpointId}` | Delete a webhook endpoint |
 
 ### Conventions
 
