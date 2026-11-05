@@ -1,0 +1,11 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: Acme Payments API
+  structure:
+    - type: space
+      key: space-docs
+      title: Acme Payments API
+      path: docs
+      default: true
+      content:
+        directory: ./
