@@ -1,0 +1,40 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Acme Payments API",
+  "description": "Charge cards, store customers and payment methods, issue refunds, and subscribe to webhook events with the Acme Payments API.",
+  "colors": {
+    "primary": "#0F766E",
+    "light": "#2DD4BF",
+    "dark": "#0F766E"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "quickstart",
+              "authentication",
+              "errors"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "openapi": "openapi.yaml"
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "https://docs.example-pay.com/support"
+      }
+    ]
+  }
+}

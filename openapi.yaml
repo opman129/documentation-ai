@@ -55,6 +55,7 @@ tags:
 
 security:
   - bearerAuth: []
+  - apiKeyAuth: []
 
 paths:
   /auth/token:
@@ -122,6 +123,8 @@ paths:
                 $ref: "#/components/schemas/CustomerList"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "429":
           $ref: "#/components/responses/TooManyRequests"
     post:
@@ -160,6 +163,8 @@ paths:
           $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "409":
           $ref: "#/components/responses/Conflict"
         "422":
@@ -183,6 +188,8 @@ paths:
                 $ref: "#/components/schemas/Customer"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "404":
           $ref: "#/components/responses/NotFound"
     patch:
@@ -209,6 +216,8 @@ paths:
           $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "404":
           $ref: "#/components/responses/NotFound"
         "422":
@@ -222,6 +231,8 @@ paths:
           description: The customer was deleted. No content is returned.
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "404":
           $ref: "#/components/responses/NotFound"
         "409":
@@ -257,6 +268,8 @@ paths:
                 $ref: "#/components/schemas/PaymentList"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "429":
           $ref: "#/components/responses/TooManyRequests"
     post:
@@ -288,7 +301,7 @@ paths:
                     currency: USD
                   customer_id: cus_8sJk2Pq1mN
                   payment_method_id: pm_1Ld9xBke72
-                  description: Order #1138
+                  description: "Order #1138"
                   capture_method: automatic
                   metadata:
                     order_id: "1138"
@@ -321,6 +334,8 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "402":
           $ref: "#/components/responses/PaymentRequired"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "422":
           $ref: "#/components/responses/UnprocessableEntity"
         "429":
@@ -342,6 +357,8 @@ paths:
                 $ref: "#/components/schemas/Payment"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "404":
           $ref: "#/components/responses/NotFound"
 
@@ -378,6 +395,8 @@ paths:
                 $ref: "#/components/schemas/Payment"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "404":
           $ref: "#/components/responses/NotFound"
         "409":
@@ -404,6 +423,8 @@ paths:
                 $ref: "#/components/schemas/RefundList"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "404":
           $ref: "#/components/responses/NotFound"
     post:
@@ -435,6 +456,8 @@ paths:
                 $ref: "#/components/schemas/Refund"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "404":
           $ref: "#/components/responses/NotFound"
         "409":
@@ -476,6 +499,8 @@ paths:
           $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "422":
           $ref: "#/components/responses/UnprocessableEntity"
 
@@ -495,6 +520,8 @@ paths:
                 $ref: "#/components/schemas/PaymentMethod"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "404":
           $ref: "#/components/responses/NotFound"
 
@@ -520,6 +547,8 @@ paths:
                       $ref: "#/components/schemas/WebhookEndpoint"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
     post:
       tags: [Webhook endpoints]
       summary: Create a webhook endpoint
@@ -548,6 +577,8 @@ paths:
           $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
         "422":
           $ref: "#/components/responses/UnprocessableEntity"
 
@@ -668,6 +699,12 @@ components:
               message: The card was declined.
               param: payment_method
               doc_url: https://docs.example-pay.com/errors/card_declined
+    Forbidden:
+      description: The token's scopes don't cover this action.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
     NotFound:
       description: No resource exists with the given identifier.
       content:

@@ -5,8 +5,8 @@ hand-written guides and an OpenAPI 3.0.3 specification. The API lets you charge
 cards, store customers and payment methods, issue refunds, and subscribe to
 webhook events.
 
-This repository holds documentation only. There is no application code, build
-step, or test suite.
+This repository holds documentation only, published with
+[Mintlify](https://mintlify.com). There is no application code or test suite.
 
 ## Contents
 
@@ -16,6 +16,7 @@ step, or test suite.
 | [authentication.md](./authentication.md) | Client-credentials tokens, token lifetime, scopes, test and live keys, and `X-API-Key` auth. |
 | [errors.md](./errors.md) | The error object, status codes, error types and codes, rate limits, and idempotent retries. |
 | [openapi.yaml](./openapi.yaml) | The API reference: endpoints, parameters, schemas, and examples. |
+| [docs.json](./docs.json) | Mintlify site configuration: name, theme, colors, and navigation. |
 
 New to the API? Start with the [Quickstart](./quickstart.md).
 
@@ -55,7 +56,8 @@ New to the API? Start with the [Quickstart](./quickstart.md).
 - **Format:** all requests use HTTPS, and all request and response bodies are
   JSON.
 - **Authentication:** send a bearer token from `POST /auth/token` on every other
-  request. Tokens last one hour and there is no refresh token. See
+  request, or an `X-API-Key` header for trusted server-to-server jobs. Tokens
+  last one hour and there is no refresh token. See
   [Authentication](./authentication.md).
 - **Amounts:** an integer in the currency's minor unit plus an ISO 4217 code, so
   `{ "value": 2000, "currency": "USD" }` means $20.00.
@@ -72,15 +74,19 @@ New to the API? Start with the [Quickstart](./quickstart.md).
 Treat [openapi.yaml](./openapi.yaml) as the reference for endpoint behaviour, and
 keep the guides in step with it when either changes.
 
-You can check the spec with any OpenAPI linter, for example:
+To add a guide, create the page and list it under `navigation` in
+[docs.json](./docs.json). The API Reference tab is generated from
+[openapi.yaml](./openapi.yaml).
+
+Preview the site and check it before you push:
 
 ```bash
-npx @redocly/cli lint openapi.yaml
+npx mint@latest dev       # local preview
+npx mint@latest validate  # content, OpenAPI, and a strict build
 ```
 
-Before publishing, remove the platform note in the HTML comment in
-[authentication.md](./authentication.md). It explains how to embed the
-`POST /auth/token` operation on Documentation.AI, Mintlify, or GitBook.
+Mintlify parses `.md` pages as MDX, so HTML comments break the build. Use
+`{/* comment */}` instead.
 
 Never commit real credentials. Examples should use placeholders such as
 `sk_test_YOUR_SECRET`.

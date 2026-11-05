@@ -1,9 +1,9 @@
 # Authentication
 
 Every request to the Acme Payments API — except the token endpoint itself —
-must be authenticated with a short-lived bearer token. This guide covers how to
-get a token, how to use it, how scopes work, and how to keep your credentials
-safe.
+must be authenticated, either with a short-lived bearer token or, for trusted
+server-to-server jobs, an API key. This guide covers how to get a token, how to
+use it, how scopes work, and how to keep your credentials safe.
 
 ## How it works
 
@@ -40,15 +40,6 @@ curl https://sandbox.example-pay.com/v1/auth/token \
   "scope": "payments.write customers.read"
 }
 ```
-
-<!--
-  Platform note (delete before publishing): this is the guide where the draft
-  drops the live POST /auth/token endpoint into a hand-written page.
-  - Documentation.AI: add this to the page's front matter / documentation.json
-    entry:  "openapi": "api-reference/openapi.yaml POST /auth/token",
-            "openapi-mode": "custom"
-  - Mintlify / GitBook: insert the single POST /auth/token operation here.
--->
 
 ## Use the token
 

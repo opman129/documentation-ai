@@ -41,6 +41,7 @@ Branch on `type` and `code`, not on `message` — message wording can change.
 | `400 Bad Request` | The request was malformed or missing a required field. |
 | `401 Unauthorized` | Authentication failed, or the token was missing or expired. |
 | `402 Payment Required` | The charge was declined by the issuer. |
+| `403 Forbidden` | The token's scopes don't cover this action. |
 | `404 Not Found` | No resource exists with the given identifier. |
 | `409 Conflict` | The request conflicts with the resource's current state. |
 | `422 Unprocessable Entity` | The request was well-formed but failed validation. |
